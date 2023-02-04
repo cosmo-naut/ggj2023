@@ -23,7 +23,7 @@ public class TitleScreen : Control
         GetNode<VBoxContainer>("MainButtonContainer").GetNode<Button>("QuitButton").Connect("pressed", this, "_QuitButtonClick");
 
         //preload the gameplay scene
-        playScene = (PackedScene)ResourceLoader.Load("res://scenes/Testing/TentacleTest.tscn");
+        playScene = (PackedScene)ResourceLoader.Load("res://scenes/main.tscn");
         //preload the howto scene
         howToScene = (PackedScene)ResourceLoader.Load("res://scenes/HowToScreen.tscn");
 
