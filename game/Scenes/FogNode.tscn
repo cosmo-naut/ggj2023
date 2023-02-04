@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Shaders/fog.tres" type="Shader" id=1]
+[ext_resource path="res://Scripts/Fog/FogNode.cs" type="Script" id=2]
+
+[sub_resource type="OpenSimplexNoise" id=2]
+
+[sub_resource type="NoiseTexture" id=3]
+seamless = true
+noise = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/fog_texture = SubResource( 3 )
+
+[node name="FogNode" type="ColorRect"]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.188235, 0.180392, 0.180392, 1 )
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="MaskParent" type="Viewport" parent="CanvasLayer/ViewportContainer"]
+size = Vector2( 1024, 600 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ViewportContainer/MaskParent"]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 1 )

@@ -18,4 +18,5 @@ public class game : Node
 	{
 		GetNode<Label>("Label").Text += "!";
 	}
+	
 }
