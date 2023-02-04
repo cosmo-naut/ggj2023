@@ -14,20 +14,20 @@ public class TentacleRenderer : Node2D
 
     public override void _Process(float delta)
     {
-        if (Input.IsActionJustPressed("mouse_click"))
-        {
-            AddPoint(GetLocalMousePosition());
+        // if (Input.IsActionJustPressed("mouse_click"))
+        // {
+        //     AddPoint(GetLocalMousePosition());
 
-        }
+        // }
 
-        if (Input.IsActionJustPressed("mouse_secondary") && Points.Count > 0)
-        {
-            TentaclePoint point = Points[Points.Count-1];
-            Points.RemoveAt(Points.Count-1);
-            if (Points.Count > 0)
-                Points[Points.Count-1].SetNext(null);
-            point.QueueFree();
-        }
+        // if (Input.IsActionJustPressed("mouse_secondary") && Points.Count > 0)
+        // {
+        //     TentaclePoint point = Points[Points.Count-1];
+        //     Points.RemoveAt(Points.Count-1);
+        //     if (Points.Count > 0)
+        //         Points[Points.Count-1].SetNext(null);
+        //     point.QueueFree();
+        // }
 
         Update();
     }
@@ -42,13 +42,22 @@ public class TentacleRenderer : Node2D
         AddChild(point);
         if (Points.Count > 0)
         {
-            point.Position = Points[Points.Count - 1].Position;
+            point.Position = Points[Points.Count - 1].Position.LinearInterpolate(location, 0.01f);
             point.SetLocation(location);
             Points[Points.Count - 1].SetNext(point);
+
             point.SetAngle(Points[Points.Count - 1].GetAngleToNext());
         }
 
         Points.Add(point);
+    }
+
+    public void SetHeadPosition(Vector2 pos)
+    {
+        if (Points.Count > 0)
+        {
+            Points[Points.Count-1].SetLocation(pos);
+        }
     }
 
     public override void _Draw()
@@ -67,18 +76,20 @@ public class TentacleRenderer : Node2D
 
                 Vector2[] nextPerpPoints = point.GetNext().GetPerpPoints();
 
+                DrawLine(perpPoints[0], nextPerpPoints[0], Colors.Red, 2);
+                DrawLine(perpPoints[1], nextPerpPoints[1], Colors.Red, 2);
 
+                Vector2[] polygon = new Vector2[] {perpPoints[0], nextPerpPoints[0], nextPerpPoints[1], perpPoints[1]};
 
-                // DrawLine(perpPoints[0], nextPerpPoints[0], Colors.Green, 2);
-                // DrawLine(perpPoints[1], nextPerpPoints[1], Colors.Green, 2);
-
-                point.SetPolyPoints(new Vector2[] {perpPoints[0], nextPerpPoints[0], nextPerpPoints[1], perpPoints[1]});
+                // if (Geometry.IsPolygonClockwise(polygon))
+                    point.SetPolyPoints(polygon);
+                // else
+                //     point.SetPolyPoints(new Vector2[] {perpPoints[0], nextPerpPoints[1], nextPerpPoints[0], perpPoints[1]});
             }
             else
             {
                 point.Hide();
             }
-
             // DrawArc(Points[i].Position, Points[i].GetGirth(), 0, Mathf.Pi* 2,30,Colors.Red, 3, true);
         }
         
