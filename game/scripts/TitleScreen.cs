@@ -16,11 +16,11 @@ public class TitleScreen : Control
     public override void _Ready()
     {
         //add the event for starting the game
-        GetNode<VBoxContainer>("MainButtonContainer").GetNode<Button>("StartButton").Connect("pressed", this, "_PlayButtonClick");
+        GetNode<VBoxContainer>("MainButtonContainer").GetNode<TextureButton>("StartButton").Connect("pressed", this, "_PlayButtonClick");
         //add the event for show the how to play screen.
-        GetNode<VBoxContainer>("MainButtonContainer").GetNode<Button>("HowToButton").Connect("pressed", this, "_HowToButtonClick");
+        GetNode<VBoxContainer>("MainButtonContainer").GetNode<TextureButton>("HowToButton").Connect("pressed", this, "_HowToButtonClick");
         //add the event for quitting the game .
-        GetNode<VBoxContainer>("MainButtonContainer").GetNode<Button>("QuitButton").Connect("pressed", this, "_QuitButtonClick");
+        GetNode<VBoxContainer>("MainButtonContainer").GetNode<TextureButton>("QuitButton").Connect("pressed", this, "_QuitButtonClick");
 
         //preload the gameplay scene
         playScene = (PackedScene)ResourceLoader.Load("res://scenes/main.tscn");
