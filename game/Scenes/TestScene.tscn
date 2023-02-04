@@ -1,15 +1,14 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Tentacle/TentacleLight.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scripts/SignalTest.cs" type="Script" id=2]
+[ext_resource path="res://Scripts/MapGeneration.cs" type="Script" id=2]
 [ext_resource path="res://CameraController.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Clot_Texture.png" type="Texture" id=5]
 
-[node name="Node2D" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Node2D2" type="Node2D"]
 script = ExtResource( 2 )
+initialRadiusToAvoidSpawn = 500.0
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
 
