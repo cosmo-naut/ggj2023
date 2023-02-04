@@ -1,0 +1,16 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform sampler2D mask_texture;
+uniform sampler2D fog_texture;
+
+void fragment() {
+	vec4 base = texture(fog_texture, UV, 0.0);
+	vec2 muv = UV;
+	muv.y = 1.0 - muv.y;
+    base.a = 1.0 - texture(mask_texture, muv).r;
+
+    COLOR = base;
+}"

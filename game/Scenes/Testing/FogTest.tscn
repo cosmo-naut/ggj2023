@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Testing/placeholder.jpg" type="Texture" id=1]
+[ext_resource path="res://Shaders/fog.tres" type="Shader" id=3]
+[ext_resource path="res://Scripts/Fog/FogNode.cs" type="Script" id=4]
+
+[sub_resource type="OpenSimplexNoise" id=2]
+
+[sub_resource type="NoiseTexture" id=3]
+seamless = true
+noise = SubResource( 2 )
+
+[sub_resource type="ViewportTexture" id=4]
+viewport_path = NodePath("FogTest/CanvasLayer/ViewportContainer/MaskParent")
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/mask_texture = SubResource( 4 )
+shader_param/fog_texture = SubResource( 3 )
+
+[node name="Background" type="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+stretch_mode = 1
+
+[node name="FogTest" type="ColorRect" parent="."]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.188235, 0.180392, 0.180392, 1 )
+script = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="FogTest"]
+layer = -10
+
+[node name="ViewportContainer" type="ViewportContainer" parent="FogTest/CanvasLayer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="MaskParent" type="Viewport" parent="FogTest/CanvasLayer/ViewportContainer"]
+size = Vector2( 1024, 600 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="FogTest/CanvasLayer/ViewportContainer/MaskParent"]
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 1 )
