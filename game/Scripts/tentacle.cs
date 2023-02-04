@@ -65,9 +65,7 @@ public class tentacle : Node2D
       {
         dir.y -= 1.0f;
       }
-
       headPosition += dir.Normalized() * Speed * delta;
-      GD.Print(lastPosition.DistanceTo(headPosition), ":", SpawnDistance);
 
       // Spawn point
       if (lastPosition.DistanceTo(headPosition) > SpawnDistance)
@@ -85,7 +83,6 @@ public class tentacle : Node2D
 
   void CreateTentaclePoints()
   {
-    GD.Print("Adding tentacle points");
     foreach (Vector2 point in points)
     {
       Node2D tentaclePoint = new Node2D();
@@ -114,6 +111,5 @@ public class tentacle : Node2D
   {
     points.Add(pos);
     lastPosition = pos;
-    GD.Print("Add point ", points.Count);
   }
 }
