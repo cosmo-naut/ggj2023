@@ -16,6 +16,9 @@ public class tentacle : Node2D
   private Vector2 lastPosition;
   private bool activeTentacle;
 
+  [Signal] delegate void TentacleGrowth(float progress);
+  [Signal] delegate void TentacleGrowthDone();
+
   public override void _Ready()
   {
     points = new List<Vector2>();
@@ -25,6 +28,8 @@ public class tentacle : Node2D
 
     growthCapacity = growthDistance;
     activeTentacle = true;
+
+    Connect(nameof(TentacleGrowthDone), this, nameof(CreateTentaclePoints));
   }
 
   public override void _Draw()
@@ -94,16 +99,14 @@ public class tentacle : Node2D
     growthCapacity -= growthRate;
     growthCapacity = Math.Max(growthCapacity, 0.0f);
 
+    EmitSignal(nameof(TentacleGrowth), growthCapacity / growthDistance);
+
     // Is done
     activeTentacle = growthCapacity > 0.0f;
-
-    // Add last node
-    GD.Print("Growth Capacity ", (growthCapacity / growthDistance) * 100, "%");
-
     if (!activeTentacle)
     {
       AddTentacleNode(headPosition);
-      CreateTentaclePoints();
+      EmitSignal(nameof(TentacleGrowthDone));
     }
   }
 
