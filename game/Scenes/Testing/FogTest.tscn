@@ -1,0 +1,29 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Testing/placeholder.jpg" type="Texture" id=1]
+[ext_resource path="res://Scenes/FogNode.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Shaders/fog.tres" type="Shader" id=3]
+
+[sub_resource type="OpenSimplexNoise" id=2]
+
+[sub_resource type="NoiseTexture" id=3]
+seamless = true
+noise = SubResource( 2 )
+
+[sub_resource type="ViewportTexture" id=4]
+viewport_path = NodePath("FogTest/CanvasLayer/ViewportContainer/MaskParent")
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/mask_texture = SubResource( 4 )
+shader_param/fog_texture = SubResource( 3 )
+
+[node name="Background" type="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+stretch_mode = 1
+
+[node name="FogNode" parent="." instance=ExtResource( 2 )]
+material = SubResource( 5 )
