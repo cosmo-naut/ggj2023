@@ -6,7 +6,7 @@ public class SignalTest : Node
 
     public override void _Ready()
     {
-        Connect("SomethingHappened", this, "OnSignalName");
+        // Connect("SomethingHappened", this, "OnSignalName");
     }
 
     public override void _Process(float delta)
