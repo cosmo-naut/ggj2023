@@ -7,6 +7,8 @@ public class FogNode : ColorRect
     public override void _Ready()
     {
         MaskParent = FindNode("MaskParent") as Viewport;
+        ViewportTexture tex = MaskParent.GetTexture();
+        (Material as ShaderMaterial).SetShaderParam("mask_texture", tex);
     }
 
     public override void _Process(float delta)
