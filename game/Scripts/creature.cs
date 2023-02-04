@@ -4,15 +4,18 @@ using System;
 public class Creature : Node2D
 {
     [Signal] delegate void TargetTentacleNew();
-    [Signal] delegate void TargetTentacleGrowth(float progress);
+    [Signal] delegate void CreatureResourceChange(float progress);
 
     private PackedScene tentacleScene;
     public Tentacle targetTentacle;
+
+    public CreatureResource creatureResource;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         tentacleScene = GD.Load<PackedScene>("res://Assets/tentacle.tscn");
+        creatureResource = new CreatureResource(1000.0f, 10.0f);
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,20 +26,31 @@ public class Creature : Node2D
         }
     }
 
-    public void EmitTargetTentacleGrowth(float progress) 
+    public void ExertResource()
     {
-        EmitSignal(nameof(TargetTentacleGrowth), progress);
+        creatureResource.Exert();
+        EmitSignal(
+            nameof(CreatureResourceChange), 
+            creatureResource.Progress);
+    }
+
+    public void ConsumeResource(float resource) 
+    {
+        creatureResource.Consume(resource);
+        EmitSignal(
+            nameof(CreatureResourceChange), 
+            creatureResource.Progress);
     }
 
     void SpawnTentacle() {
         Tentacle t = tentacleScene.Instance<Tentacle>();
         t.Position = Position;
         AddChild(t);
+
+        ConsumeResource(1000.0f);
+
+        t.ParentCreature = this;
         targetTentacle = t;
-        targetTentacle.Connect(
-            "TentacleGrowth", 
-            this, 
-            "EmitTargetTentacleGrowth");
         EmitSignal("TargetTentacleNew");
     }
 }
