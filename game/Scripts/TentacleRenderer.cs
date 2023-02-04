@@ -16,18 +16,8 @@ public class TentacleRenderer : Node2D
     {
         if (Input.IsActionJustPressed("mouse_click"))
         {
-            TentaclePoint point = _polygonScene.Instance<TentaclePoint>();
-            point.Position = GetLocalMousePosition();
-            AddChild(point);
-            if (Points.Count > 0)
-            {
-                Points[Points.Count - 1].SetNext(point);
-                point.SetAngle(Points[Points.Count - 1].GetAngleToNext());
-            }
+            AddPoint(GetLocalMousePosition());
 
-            Points.Add(point);
-            
-            Update();
         }
 
         if (Input.IsActionJustPressed("mouse_secondary") && Points.Count > 0)
@@ -37,8 +27,28 @@ public class TentacleRenderer : Node2D
             if (Points.Count > 0)
                 Points[Points.Count-1].SetNext(null);
             point.QueueFree();
-            Update();
         }
+
+        Update();
+    }
+
+    public void AddPoint(Vector2 location)
+    {
+        TentaclePoint point = _polygonScene.Instance<TentaclePoint>();
+        
+        point.Position = location;
+        point.SetLocation(location);
+        
+        AddChild(point);
+        if (Points.Count > 0)
+        {
+            point.Position = Points[Points.Count - 1].Position;
+            point.SetLocation(location);
+            Points[Points.Count - 1].SetNext(point);
+            point.SetAngle(Points[Points.Count - 1].GetAngleToNext());
+        }
+
+        Points.Add(point);
     }
 
     public override void _Draw()

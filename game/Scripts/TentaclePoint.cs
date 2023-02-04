@@ -2,9 +2,10 @@ using Godot;
 
 public class TentaclePoint : Polygon2D
 {
-    private float _girth;
+    private float _girth = 0;
     private Vector2 _perpPoints;
     private TentaclePoint _next = null;
+    private Vector2 _targetPosition;
     private float _angle = 0;
     public bool IsLast { get => _next == null; }
     
@@ -39,10 +40,29 @@ public class TentaclePoint : Polygon2D
 
     public float GetGirth()
     {
+        return _girth;
+    }
+
+    public float GetMaxGirth()
+    {
         if (IsLast)
             return 0;
 
-        return Mathf.Min(_next.GetGirth() + 3, 25);
+        return Mathf.Min(_next.GetGirth() + 5, 25);
+    }
+
+    public void SetLocation(Vector2 location)
+    {
+        _targetPosition = location;
+    }
+
+    public override void _Process(float delta)
+    {
+        Position = Position.LinearInterpolate(_targetPosition, delta);
+        if (_girth < GetMaxGirth())
+        {
+            _girth += delta * 3;
+        }
     }
 
     public Vector2[] GetPerpPoints()
