@@ -4,18 +4,18 @@ using System.Collections.Generic;
 
 public class tentacle : Node2D
 {
-  private Vector2 pos;
-  [Export]
-  public float SpawnDistance = 10.0f;
+  private Vector2 headPosition;
+  [Export] public float SpawnDistance = 50.0f;
+  [Export] public float growthSpeed = 100.0f;
   private List<Vector2> points;
   private Vector2 lastPosition;
 
   public override void _Ready()
   {
     points = new List<Vector2>();
-    pos = Position;
-    points.Add(pos);
-    lastPosition = pos;
+    headPosition = Position;
+    points.Add(headPosition);
+    lastPosition = headPosition;
   }
 
   public override void _Draw()
@@ -24,36 +24,40 @@ public class tentacle : Node2D
 
     foreach (var item in points)
     {
-      DrawCircle(item, 10.0f, Godot.Colors.White);
+      DrawCircle(item, 5.0f, Godot.Colors.White);
     }
 
-    DrawCircle(pos, 10.0f, Godot.Colors.Red);
+    DrawCircle(headPosition, 10.0f, Godot.Colors.Red);
   }
 
   public override void _Process(float delta)
   {
+    Vector2 dir = Vector2.Zero;
+
     if (Input.IsActionPressed("ui_right"))
     {
-      pos.x += 10.0f * delta;
+      dir.x += 1.0f;
     }
     if (Input.IsActionPressed("ui_left"))
     {
-      pos.x -= 10.0f * delta;
+      dir.x -= 1.0f;
     }
     if (Input.IsActionPressed("ui_down"))
     {
-      pos.y += 10.0f * delta;
+      dir.y += 1.0f;
     }
     if (Input.IsActionPressed("ui_up"))
     {
-      pos.y -= 10.0f * delta;
+      dir.y -= 1.0f;
     }
 
+    headPosition += dir.Normalized() * growthSpeed * delta;
+
     // Spawn point
-    if (lastPosition.DistanceTo(pos) >= SpawnDistance)
+    if (lastPosition.DistanceTo(headPosition) >= SpawnDistance)
     {
-      points.Add(pos);
-      lastPosition = pos;
+      points.Add(headPosition);
+      lastPosition = headPosition;
       GD.Print("Add point", points.Count);
     }
 
