@@ -1,6 +1,8 @@
 using Godot;
 using System;
 
+
+
 public class TitleScreen : Control
 {
     // Declare member variables here. Examples:
@@ -8,6 +10,8 @@ public class TitleScreen : Control
     // private string b = "text";
 
     // Called when the node enters the scene tree for the first time.
+    PackedScene playScene;//container for the main game scene.
+
     public override void _Ready()
     {
         //add the event for starting the game
@@ -16,6 +20,9 @@ public class TitleScreen : Control
         GetNode<VBoxContainer>("MainButtonContainer").GetNode<Button>("HowToButton").Connect("pressed", this, "_HowToButtonClick");
         //add the event for quitting
         GetNode<VBoxContainer>("MainButtonContainer").GetNode<Button>("QuitButton").Connect("pressed", this, "_QuitButtonClick");
+    
+        //preload the gameplay scene
+        playScene = (PackedScene)ResourceLoader.Load("res://TestScene.tscn");
     }
     public void _QuitButtonClick()
     {
@@ -24,7 +31,9 @@ public class TitleScreen : Control
     }
     public void _PlayButtonClick()
     {
-        GD.Print("playing?");
+        //GD.Print("playing?");
+        //load the new level
+        GetTree().ChangeSceneTo(playScene);
     }
     public void _HowToButtonClick()
     {
