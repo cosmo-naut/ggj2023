@@ -62,16 +62,30 @@ public class tentacle : Node2D
       }
 
       headPosition += dir.Normalized() * Speed * delta;
+      GD.Print(lastPosition.DistanceTo(headPosition), ":", SpawnDistance);
 
       // Spawn point
-      if (lastPosition.DistanceTo(headPosition) >= SpawnDistance)
+      if (lastPosition.DistanceTo(headPosition) > SpawnDistance)
+      {
         AddTentacleNode(headPosition);
+      }
 
       // Check for movement
       if (dir != Vector2.Zero)
         updateGrowth();
 
       Update();
+    }
+  }
+
+  void CreateTentaclePoints()
+  {
+    GD.Print("Adding tentacle points");
+    foreach (Vector2 point in points)
+    {
+      Node2D tentaclePoint = new Node2D();
+      tentaclePoint.Position = point;
+      AddChild(tentaclePoint);
     }
   }
 
@@ -84,8 +98,13 @@ public class tentacle : Node2D
     activeTentacle = growthCapacity > 0.0f;
 
     // Add last node
-    AddTentacleNode(headPosition);
-    GD.Print("Growth Capacity {sdf}", (growthCapacity / growthDistance) * 100, "%");
+    GD.Print("Growth Capacity ", (growthCapacity / growthDistance) * 100, "%");
+
+    if (!activeTentacle)
+    {
+      AddTentacleNode(headPosition);
+      CreateTentaclePoints();
+    }
   }
 
   void AddTentacleNode(Vector2 pos)
