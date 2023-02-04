@@ -12,7 +12,7 @@ public class HowtoScreen : Control
     public override void _Ready()
     {
         GetNode<HBoxContainer>("HBoxContainer").GetNode<Button>("BackButton").Connect("pressed", this, "_backButtonClick");
-        mainScene = (PackedScene)ResourceLoader.Load("res://TitleScreen.tscn");
+        mainScene = (PackedScene)ResourceLoader.Load("res://scenes/TitleScreen.tscn");
 
     }
 
