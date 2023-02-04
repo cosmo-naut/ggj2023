@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/HowtoScreen.cs" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 205.0
+margin_bottom = 31.0
+rect_scale = Vector2( 5, 5 )
+text = "How To Play?"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="blank2" type="Label" parent="."]
+margin_left = 50.0
+margin_top = 150.0
+margin_right = 803.333
+margin_bottom = 334.0
+rect_scale = Vector2( 1.2, 1.2 )
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 5.0
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Laoreet id donec ultrices tincidunt arcu non. Risus at ultrices mi tempus imperdiet nulla. Ultrices dui sapien eget mi. Et tortor at risus viverra adipiscing. Lacus vestibulum sed arcu non odio euismod lacinia at. Enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit. Molestie at elementum eu facilisis. Molestie ac feugiat sed lectus vestibulum mattis. Praesent elementum facilisis leo vel fringilla est ullamcorper eget nulla. Vitae congue mauris rhoncus aenean vel elit. Eget nullam non nisi est sit amet. Id aliquet risus feugiat in ante metus dictum at tempor. Amet mattis vulputate enim nulla aliquet porttitor. Mauris cursus mattis molestie a iaculis at erat pellentesque adipiscing. Varius sit amet mattis vulputate enim nulla aliquet. Erat imperdiet sed euismod nisi porta lorem mollis aliquam. Senectus et netus et malesuada fames ac. Eget velit aliquet sagittis id consectetur purus ut faucibus."
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 574.0
+margin_top = 520.0
+margin_right = 974.0
+margin_bottom = 560.0
+
+[node name="blank2" type="Label" parent="HBoxContainer"]
+margin_right = 163.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+size_flags_stretch_ratio = 5.0
+
+[node name="blank" type="Label" parent="HBoxContainer"]
+margin_left = 167.0
+margin_top = 13.0
+margin_right = 232.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="BackButton" type="Button" parent="HBoxContainer"]
+margin_left = 236.0
+margin_right = 400.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+text = "back"

@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://QuitButton.cs" type="Script" id=2]
 [ext_resource path="res://TitleScreen.cs" type="Script" id=3]
 
 [node name="Control" type="Control"]
@@ -38,6 +37,5 @@ margin_right = 150.0
 margin_bottom = 111.0
 size_flags_vertical = 6
 text = "Quit"
-script = ExtResource( 2 )
 
 [node name="Node" type="Node" parent="."]

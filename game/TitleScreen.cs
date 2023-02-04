@@ -10,19 +10,23 @@ public class TitleScreen : Control
     // private string b = "text";
 
     // Called when the node enters the scene tree for the first time.
-    PackedScene playScene;//container for the main game scene.
+    PackedScene playScene=null;//container for the main game scene.
+    PackedScene howToScene=null;//for the game description/instruction scene(or credits???)
 
     public override void _Ready()
     {
         //add the event for starting the game
         GetNode<VBoxContainer>("MainButtonContainer").GetNode<Button>("StartButton").Connect("pressed", this, "_PlayButtonClick");
-        //add the event for entering the how to interface(?)
+        //add the event for show the how to play screen.
         GetNode<VBoxContainer>("MainButtonContainer").GetNode<Button>("HowToButton").Connect("pressed", this, "_HowToButtonClick");
-        //add the event for quitting
+        //add the event for quitting the game .
         GetNode<VBoxContainer>("MainButtonContainer").GetNode<Button>("QuitButton").Connect("pressed", this, "_QuitButtonClick");
-    
+
         //preload the gameplay scene
         playScene = (PackedScene)ResourceLoader.Load("res://TestScene.tscn");
+        //preload the howto scene
+        howToScene = (PackedScene)ResourceLoader.Load("res://scenes/HowToScreen.tscn");
+
     }
     public void _QuitButtonClick()
     {
@@ -38,6 +42,8 @@ public class TitleScreen : Control
     public void _HowToButtonClick()
     {
         GD.Print("how to play?");
+        GetTree().ChangeSceneTo(howToScene);
+
     }
 
 
