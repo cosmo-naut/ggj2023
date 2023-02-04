@@ -17,5 +17,3 @@ margin_bottom = 88.0
 value = 100.0
 texture_progress = ExtResource( 1 )
 nine_patch_stretch = true
-
-[connection signal="value_changed" from="TextureProgress" to="." method="_on_TextureProgress_value_changed"]

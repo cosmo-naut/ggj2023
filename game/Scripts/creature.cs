@@ -1,10 +1,13 @@
 using Godot;
 using System;
 
-public class creature : Node2D
+public class Creature : Node2D
 {
+    [Signal] delegate void TargetTentacleNew();
+    [Signal] delegate void TargetTentacleGrowth(float progress);
+
     private PackedScene tentacleScene;
-    public tentacle targetTentacle;
+    public Tentacle targetTentacle;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -20,10 +23,20 @@ public class creature : Node2D
         }
     }
 
+    public void EmitTargetTentacleGrowth(float progress) 
+    {
+        EmitSignal(nameof(TargetTentacleGrowth), progress);
+    }
+
     void SpawnTentacle() {
-        tentacle t = tentacleScene.Instance<tentacle>();
+        Tentacle t = tentacleScene.Instance<Tentacle>();
         t.Position = Position;
         AddChild(t);
         targetTentacle = t;
+        targetTentacle.Connect(
+            "TentacleGrowth", 
+            this, 
+            "EmitTargetTentacleGrowth");
+        EmitSignal("TargetTentacleNew");
     }
 }

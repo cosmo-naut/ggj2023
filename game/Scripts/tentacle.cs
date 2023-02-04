@@ -2,11 +2,12 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class tentacle : Node2D
+public class Tentacle : Node2D
 {
   private Vector2 headPosition;
   [Export] public float SpawnDistance = 50.0f;
   [Export] public float Speed = 100.0f;
+  private Vector2 Direction;
 
   [Export] public float growthDistance = 1000.0f;
   [Export] public float growthRate = 40.0f;
@@ -29,7 +30,10 @@ public class tentacle : Node2D
     growthCapacity = growthDistance;
     activeTentacle = true;
 
+    Direction = Vector2.Zero;
+
     Connect(nameof(TentacleGrowthDone), this, nameof(CreateTentaclePoints));
+    EmitSignal(nameof(TentacleGrowth), growthCapacity/growthDistance);
   }
 
   public override void _Draw()
@@ -44,28 +48,18 @@ public class tentacle : Node2D
     DrawCircle(headPosition, 10.0f, Godot.Colors.Red);
   }
 
+  public void Move(Vector2 direction) 
+  {
+    Direction = direction.Normalized();
+  }
+
   public override void _Process(float delta)
   {
     if (activeTentacle)
     {
-      Vector2 dir = Vector2.Zero;
-      if (Input.IsActionPressed("ui_right"))
-      {
-        dir.x += 1.0f;
-      }
-      if (Input.IsActionPressed("ui_left"))
-      {
-        dir.x -= 1.0f;
-      }
-      if (Input.IsActionPressed("ui_down"))
-      {
-        dir.y += 1.0f;
-      }
-      if (Input.IsActionPressed("ui_up"))
-      {
-        dir.y -= 1.0f;
-      }
-      headPosition += dir.Normalized() * Speed * delta;
+      Vector2 dir = Direction;
+      headPosition += dir * Speed * delta;
+      Direction = Vector2.Zero;
 
       // Spawn point
       if (lastPosition.DistanceTo(headPosition) > SpawnDistance)
