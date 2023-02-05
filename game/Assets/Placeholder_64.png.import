@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/placeholder.jpg-664767c05d33f25a5407e80ac1f35bac.stex"
+path="res://.import/Placeholder_64.png-5cec965a96439c4a308f43637e2c8b09.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Testing/placeholder.jpg"
-dest_files=[ "res://.import/placeholder.jpg-664767c05d33f25a5407e80ac1f35bac.stex" ]
+source_file="res://Assets/Placeholder_64.png"
+dest_files=[ "res://.import/Placeholder_64.png-5cec965a96439c4a308f43637e2c8b09.stex" ]
 
 [params]
 

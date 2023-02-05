@@ -6,6 +6,11 @@ public class TitleScreen : Control
     PackedScene playScene=null;//container for the main game scene.
     PackedScene howToScene=null;//for the game description/instruction scene(or credits???)
 
+    AudioStreamPlayer BGPlayer=null;
+
+
+
+
     public override void _Ready()
     {
         //add the event for starting the game

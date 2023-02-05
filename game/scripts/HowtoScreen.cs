@@ -11,7 +11,7 @@ public class HowtoScreen : Control
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        GetNode<HBoxContainer>("HBoxContainer").GetNode<Button>("BackButton").Connect("pressed", this, "_backButtonClick");
+        GetNode<HBoxContainer>("HBoxContainer").GetNode<TextureButton>("BackButton").Connect("pressed", this, "_backButtonClick");
         mainScene = (PackedScene)ResourceLoader.Load("res://scenes/TitleScreen.tscn");
 
     }
