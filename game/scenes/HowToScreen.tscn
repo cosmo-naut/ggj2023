@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/HowtoScreen.cs" type="Script" id=1]
 [ext_resource path="res://scripts/ButtonEffect.cs" type="Script" id=2]
 [ext_resource path="res://Sprites/Button_Placeholder_Clicked_150x20.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Button_Placeholder_150x20.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Placeholder_64.png" type="Texture" id=5]
-[ext_resource path="res://scenes/Testing/placeholder.jpg" type="Texture" id=6]
 [ext_resource path="res://Sprites/Button_Placeholder__Hover_150x20.png" type="Texture" id=7]
 
 [sub_resource type="StreamTexture" id=1]
@@ -149,4 +148,3 @@ valign = 1
 
 [node name="Placeholder" type="Sprite" parent="."]
 position = Vector2( 512, 300 )
-texture = ExtResource( 6 )
