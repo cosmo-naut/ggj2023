@@ -24,7 +24,7 @@ public class Creature : Node2D
     public override void _Process(float delta)
     {
         if(Input.IsActionJustReleased("ui_accept")) {
-            SpawnTentacle();
+            SpawnTentacle(Position);
         }
     }
 
@@ -44,10 +44,9 @@ public class Creature : Node2D
             creatureResource.Progress);
     }
 
-    void SpawnTentacle() {
+    void SpawnTentacle(Vector2 from) {
         Tentacle t = tentacleScene.Instance<Tentacle>();
-        t.Position = Position;
-        t.creatureLightScene = creatureLightScene;
+        t.Position = from;
         AddChild(t);
 
         ConsumeResource(1000.0f);
