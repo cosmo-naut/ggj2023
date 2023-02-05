@@ -22,6 +22,10 @@ Random="*res://Scripts/Random.cs"
 
 enabled=PoolStringArray(  )
 
+[global]
+
+camera=false
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
