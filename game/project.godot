@@ -14,9 +14,17 @@ config/name="game"
 run/main_scene="res://Scenes/Game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Random="*res://Scripts/Random.cs"
+
 [editor_plugins]
 
 enabled=PoolStringArray(  )
+
+[global]
+
+camera=false
 
 [gui]
 
