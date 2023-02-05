@@ -25,6 +25,10 @@ public class TitleScreen : Control
         //preload the howto scene
         howToScene = (PackedScene)ResourceLoader.Load("res://scenes/HowToScreen.tscn");
 
+        BGPlayer = GetNode<AudioStreamPlayer>("BGPlayer");
+        if (!BGPlayer.Playing)
+            BGPlayer.Play();
+
     }
 
     public void _QuitButtonClick()
