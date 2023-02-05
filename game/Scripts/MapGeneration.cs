@@ -56,7 +56,6 @@ public class MapGeneration : Node2D
         }
     }
 
-
     public void SpawnResource(Vector2 position)
     {
         // Depending on the size of the resource, we should give it more value?? 

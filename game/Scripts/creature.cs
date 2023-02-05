@@ -47,6 +47,7 @@ public class Creature : Node2D
     void SpawnTentacle(Vector2 from) {
         Tentacle t = tentacleScene.Instance<Tentacle>();
         t.Position = from;
+        t.creatureLightScene = creatureLightScene;
         AddChild(t);
 
         ConsumeResource(1000.0f);
