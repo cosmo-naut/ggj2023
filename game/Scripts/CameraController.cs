@@ -9,6 +9,8 @@ public class CameraController : Camera2D
     float minZoom = 0.5f;
 
 
+
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -58,5 +60,7 @@ public class CameraController : Camera2D
         toMove = toMove.Normalized();
 
         Translate(toMove * delta * movementSpeed);
+
+
     }
 }
