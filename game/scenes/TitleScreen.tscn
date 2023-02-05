@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Sprites/Title_Screen_Background_Logo.png" type="Texture" id=1]
+[ext_resource path="res://Assets/It_Grows_Logo_Only.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Button_Placeholder_150x20.png" type="Texture" id=2]
 [ext_resource path="res://scripts/TitleScreen.cs" type="Script" id=3]
 [ext_resource path="res://Sprites/Button_Placeholder__Hover_150x20.png" type="Texture" id=4]
@@ -20,7 +20,7 @@ shader_param/vignette_rgb = Color( 0, 0, 0, 1 )
 
 [sub_resource type="Theme" id=1]
 
-[node name="Control" type="Control"]
+[node name="Control2" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
