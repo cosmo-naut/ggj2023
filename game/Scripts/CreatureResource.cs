@@ -1,28 +1,37 @@
 using System;
 using Godot;
 
-public class CreatureResource 
+public class CreatureResource : Sprite
 {
-  private float _resource;
-  public float Resource { get {return _resource;} }
-  public float Progress { get {return (_resource/_maxResource) * 100.0f;}}
+    private float _resource;
+    public float Resource { get { return _resource; } }
+    public float Progress { get { return (_resource / _maxResource) * 100.0f; } }
 
-  private float _maxResource;
+    private float _maxResource;
 
-  public float ExertRate { get; set; }
+    public float ExertRate { get; set; }
 
-  public CreatureResource(float maxResource, float exertRate)
-  {
-    _resource = 0.0f;
-    _maxResource = maxResource;
-    ExertRate = exertRate;
-  }
+    public CreatureResource(float maxResource, float exertRate)
+    {
+        _resource = 0.0f;
+        _maxResource = maxResource;
+        ExertRate = exertRate;
+    }
 
-  public void Consume(float resource) {
-    _resource += resource;
-  }
+    public CreatureResource()
+    {
+        _resource = 0.0f;
+        _maxResource = 1f;
+        ExertRate = 1f;
+    }
 
-  public void Exert() {
-    _resource -= ExertRate;
-  }
+    public void Consume(float resource)
+    {
+        _resource += resource;
+    }
+
+    public void Exert()
+    {
+        _resource -= ExertRate;
+    }
 }
