@@ -11,7 +11,8 @@ config_version=4
 [application]
 
 config/name="game"
-run/main_scene="res://Scenes/Game.tscn"
+run/main_scene="res://Scenes/TitleScreen.tscn"
+boot_splash/image="res://Sprites/Title_Screen_Background_Logo.png"
 config/icon="res://icon.png"
 
 [autoload]
