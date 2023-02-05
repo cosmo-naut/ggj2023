@@ -26,6 +26,10 @@ public class TitleScreen : Control
         if (!BGPlayer.Playing)
             BGPlayer.Play();
 
+        APlayer = GetNode<AnimationPlayer>("APlayer");
+        if (!APlayer.IsPlaying)
+            APlayer.Play("fade in logo");
+
     }
 
     public void _QuitButtonClick()
