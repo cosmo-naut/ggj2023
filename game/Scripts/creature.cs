@@ -10,12 +10,14 @@ public class Creature : Node2D
     public Tentacle targetTentacle;
 
     public CreatureResource creatureResource;
+    private PackedScene creatureLightScene;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         tentacleScene = GD.Load<PackedScene>("res://Assets/tentacle.tscn");
-        creatureResource = new CreatureResource(1000.0f, 10.0f);
+        creatureResource = new CreatureResource(1000.0f, 1.0f);
+        creatureLightScene = GD.Load<PackedScene>("res://Scenes/Tentacle/TentacleLight.tscn");
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,6 +47,7 @@ public class Creature : Node2D
     void SpawnTentacle(Vector2 from) {
         Tentacle t = tentacleScene.Instance<Tentacle>();
         t.Position = from;
+        t.creatureLightScene = creatureLightScene;
         AddChild(t);
 
         ConsumeResource(1000.0f);

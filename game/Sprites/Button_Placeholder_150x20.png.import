@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Button_Placeholder__Hover_150x20.png-85ff36b8bfabde2077a502cf3c03781f.stex"
+path="res://.import/Button_Placeholder_150x20.png-d778ef6827732068f9da82cd79b651d5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Button_Placeholder__Hover_150x20.png"
-dest_files=[ "res://.import/Button_Placeholder__Hover_150x20.png-85ff36b8bfabde2077a502cf3c03781f.stex" ]
+source_file="res://Sprites/Button_Placeholder_150x20.png"
+dest_files=[ "res://.import/Button_Placeholder_150x20.png-d778ef6827732068f9da82cd79b651d5.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Title_Screen_Background_Logo.png-37ba45e5441d6a71fc802c1b584f407e.stex"
+path="res://.import/Branch_Texture.png-6d9e5487879e691930dc3d187ad5c682.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Title_Screen_Background_Logo.png"
-dest_files=[ "res://.import/Title_Screen_Background_Logo.png-37ba45e5441d6a71fc802c1b584f407e.stex" ]
+source_file="res://Sprites/Branch_Texture.png"
+dest_files=[ "res://.import/Branch_Texture.png-6d9e5487879e691930dc3d187ad5c682.stex" ]
 
 [params]
 
