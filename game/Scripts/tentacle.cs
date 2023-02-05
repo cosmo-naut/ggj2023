@@ -15,6 +15,8 @@ public class Tentacle : Node2D
   private Vector2 lastPosition;
   private bool activeTentacle;
 
+  private PackedScene creatureLightScene;
+
   [Signal] delegate void TentacleGrowth(float progress);
   [Signal] delegate void TentacleGrowthDone();
 
@@ -37,17 +39,11 @@ public class Tentacle : Node2D
     _renderer.AddPoint(Position);
 
     Connect(nameof(TentacleGrowthDone), this, nameof(CreateTentaclePoints));
+    creatureLightScene = GD.Load<PackedScene>("res://Scenes/Tentacle/TentacleLight.tscn");
   }
 
   public override void _Draw()
   {
-    // DrawCircle(Position, 10.0f, Godot.Colors.Green);
-
-    foreach (var item in points)
-    {
-      // DrawCircle(item, 5.0f, Godot.Colors.White);
-    }
-
     DrawCircle(headPosition, 3.0f, Godot.Colors.Red);
   }
 
@@ -106,5 +102,9 @@ public class Tentacle : Node2D
     points.Add(pos);
     _renderer.AddPoint(pos);
     lastPosition = pos;
+
+    LightAnimation creatureLight = creatureLightScene.Instance<LightAnimation>();
+    creatureLight.Position = pos;
+    AddChild(creatureLight);
   }
 }

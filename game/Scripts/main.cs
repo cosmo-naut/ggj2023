@@ -13,7 +13,7 @@ public class main : Node2D
         creature.Connect("TargetTentacleNew", this, "OnTargetTentacleNew");
         creature.Connect("CreatureResourceChange", this, "UpdateProgress");
 
-        progressBar = GetNode<uiProgressBar>("./uiTentacle");
+        progressBar = GetNode<uiProgressBar>("./Camera2D/CanvasLayer/uiTentacle");
         progressBar.Hide();
     }
 

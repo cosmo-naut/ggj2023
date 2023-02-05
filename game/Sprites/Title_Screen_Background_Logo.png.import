@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Button_Placeholder_Clicked_150x20.png-9fd883e0d759e0554c3012821b6721f8.stex"
+path="res://.import/Title_Screen_Background_Logo.png-c0245cdb16aed3a16ec6f58b8452d725.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Button_Placeholder_Clicked_150x20.png"
-dest_files=[ "res://.import/Button_Placeholder_Clicked_150x20.png-9fd883e0d759e0554c3012821b6721f8.stex" ]
+source_file="res://Sprites/Title_Screen_Background_Logo.png"
+dest_files=[ "res://.import/Title_Screen_Background_Logo.png-c0245cdb16aed3a16ec6f58b8452d725.stex" ]
 
 [params]
 
