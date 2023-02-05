@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/It_Grows_Logo_Only.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Button_Placeholder_150x20.png" type="Texture" id=2]
@@ -19,37 +19,6 @@ shader_param/vignette_intensity = 0.4
 shader_param/vignette_opacity = 0.676
 shader_param/vignette_rgb = Color( 0, 0, 0, 1 )
 
-[sub_resource type="Animation" id=5]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "fade in logo"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-
 [sub_resource type="Theme" id=1]
 
 [node name="Control2" type="Control"]
@@ -69,13 +38,7 @@ position = Vector2( 512, 300 )
 scale = Vector2( 0.55, 0.55 )
 texture = SubResource( 4 )
 
-[node name="APlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Logo")
-anims/RESET = SubResource( 5 )
-"anims/fade in logo" = SubResource( 6 )
-
 [node name="Logo" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 512, 222.375 )
 scale = Vector2( 0.553, 0.553 )
 texture = ExtResource( 1 )
