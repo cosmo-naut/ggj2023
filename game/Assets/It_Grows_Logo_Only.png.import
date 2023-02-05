@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/placeholder.jpg-664767c05d33f25a5407e80ac1f35bac.stex"
+path="res://.import/It_Grows_Logo_Only.png-e3812cbe792cae536bd58ece66960078.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Testing/placeholder.jpg"
-dest_files=[ "res://.import/placeholder.jpg-664767c05d33f25a5407e80ac1f35bac.stex" ]
+source_file="res://Assets/It_Grows_Logo_Only.png"
+dest_files=[ "res://.import/It_Grows_Logo_Only.png-e3812cbe792cae536bd58ece66960078.stex" ]
 
 [params]
 

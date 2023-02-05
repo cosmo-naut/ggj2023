@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/CameraController.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/ParallaxBackground.tscn" type="PackedScene" id=4]
 
-[node name="Node2D2" type="Node2D"]
+[node name="Node2D3" type="Node2D"]
 script = ExtResource( 2 )
 initialRadiusToAvoidSpawn = 500.0
 
