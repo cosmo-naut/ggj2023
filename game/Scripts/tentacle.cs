@@ -37,6 +37,7 @@ public class Tentacle : Node2D
     _renderer = new TentacleRenderer();
     AddChild(_renderer);
     _renderer.AddPoint(Position);
+    _renderer.AddPoint(Position);
 
     Connect(nameof(TentacleGrowthDone), this, nameof(CreateTentaclePoints));
     EmitSignal(nameof(TentacleGrowth), growthCapacity/growthDistance);
