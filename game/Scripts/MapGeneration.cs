@@ -40,8 +40,6 @@ public class MapGeneration : Node2D
         {
 
             float newRadius = radius + radiusIncrement;
-            DrawCircle(Vector2.Zero, newRadius, Colors.White);
-
 
             for (int i = 0; i < spawnItemPerRadius; i++)
             {
@@ -56,17 +54,7 @@ public class MapGeneration : Node2D
             // Update the radius
             radius = newRadius;
         }
-
-
     }
-
-
-    public override void _Draw()
-    {
-        DrawCircle(Vector2.Zero, initialRadiusToAvoidSpawn, Colors.White);
-    }
-
-
 
     public void SpawnResource(Vector2 position)
     {
