@@ -15,7 +15,7 @@ public class Creature : Node2D
     public override void _Ready()
     {
         tentacleScene = GD.Load<PackedScene>("res://Assets/tentacle.tscn");
-        creatureResource = new CreatureResource(1000.0f, 10.0f);
+        creatureResource = new CreatureResource(1000.0f, 1.0f);
     }
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.

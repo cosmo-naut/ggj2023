@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/uiProgressBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/creature.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/main.cs" type="Script" id=3]
+[ext_resource path="res://Scenes/CameraController.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Clot_Texture.png" type="Texture" id=5]
+
+[node name="root" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="creature" parent="." instance=ExtResource( 2 )]
+
+[node name="Camera2D" parent="." instance=ExtResource( 4 )]
+current = true
+
+[node name="ClotTexture" type="Sprite" parent="Camera2D"]
+position = Vector2( -8, 10 )
+scale = Vector2( 2.02539, 1.23438 )
+z_index = -4096
+texture = ExtResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="uiTentacle" parent="Camera2D/CanvasLayer" instance=ExtResource( 1 )]
