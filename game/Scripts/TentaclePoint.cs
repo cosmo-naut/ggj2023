@@ -2,7 +2,7 @@ using Godot;
 
 public class TentaclePoint : Polygon2D
 {
-    private float _girth = 0;
+    private float _girth = 5;
     private Vector2 _perpPoints;
     private TentaclePoint _next = null;
     private Vector2 _targetPosition;
@@ -33,7 +33,7 @@ public class TentaclePoint : Polygon2D
     {
         if (IsLast)
             return _angle;
-
+        
         return Position.AngleToPoint(_next.Position);
     }
 
@@ -67,15 +67,16 @@ public class TentaclePoint : Polygon2D
 
     public Vector2[] GetPerpPoints()
     {
-            float[] perpAngle = new float[2];
-            perpAngle[0] = GetAngleToNext() + (Mathf.Pi / 2);
-            perpAngle[1] = GetAngleToNext() - (Mathf.Pi / 2);
+        float[] perpAngle = new float[2];
 
-            Vector2[] perpPoints = new Vector2[2];
-            perpPoints[0] = OffsetAngle(Position, perpAngle[0], GetGirth());
-            perpPoints[1] = OffsetAngle(Position, perpAngle[1], GetGirth());
+        perpAngle[0] = GetAngleToNext() + (Mathf.Pi / 2);
+        perpAngle[1] = GetAngleToNext() - (Mathf.Pi / 2);
 
-            return perpPoints;
+        Vector2[] perpPoints = new Vector2[2];
+        perpPoints[0] = OffsetAngle(Position, perpAngle[0], GetGirth());
+        perpPoints[1] = OffsetAngle(Position, perpAngle[1], GetGirth());
+
+        return perpPoints;
     }
 
     public Vector2 OffsetAngle(Vector2 origin, float angle, float distance)
@@ -88,7 +89,7 @@ public class TentaclePoint : Polygon2D
 
     public override void _Draw()
     {
-        // DrawCircle(Vector2.Zero, 3, Colors.Cyan);
+        DrawCircle(Vector2.Zero, 3, Colors.Cyan);
     }
 
     public void SetPolyPoints(Vector2[] points)
@@ -100,13 +101,10 @@ public class TentaclePoint : Polygon2D
         }
         Polygon = polygons;
 
+        // Polygon = Geometry.ConvexHull2d(points);
+
         Offset = -Position;
 
         Show();
-    }
-
-    public void HidePoly()
-    {
-        Hide();
     }
 }
