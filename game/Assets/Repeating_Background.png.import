@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/placeholder.jpg-485bfe8c825912602a280df57311d314.stex"
+path="res://.import/Repeating_Background.png-9b58ea0825f2f530164fcabdbceb4329.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Testing/placeholder.jpg"
-dest_files=[ "res://.import/placeholder.jpg-485bfe8c825912602a280df57311d314.stex" ]
+source_file="res://Assets/Repeating_Background.png"
+dest_files=[ "res://.import/Repeating_Background.png-9b58ea0825f2f530164fcabdbceb4329.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
