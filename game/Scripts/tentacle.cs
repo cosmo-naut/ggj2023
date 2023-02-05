@@ -8,7 +8,7 @@ public class Tentacle : Node2D
 
   private Vector2 headPosition;
   [Export] public float SpawnDistance = 50.0f;
-  [Export] public float Speed = 100.0f;
+  [Export] public float Speed = 60.0f;
   private Vector2 Direction;
 
   private List<Vector2> points;
@@ -17,6 +17,8 @@ public class Tentacle : Node2D
 
   [Signal] delegate void TentacleGrowth(float progress);
   [Signal] delegate void TentacleGrowthDone();
+
+  private TentacleRenderer _renderer;
 
   public override void _Ready()
   {
@@ -29,19 +31,24 @@ public class Tentacle : Node2D
 
     Direction = Vector2.Zero;
 
+    _renderer = new TentacleRenderer();
+    AddChild(_renderer);
+    _renderer.AddPoint(Position);
+    _renderer.AddPoint(Position);
+
     Connect(nameof(TentacleGrowthDone), this, nameof(CreateTentaclePoints));
   }
 
   public override void _Draw()
   {
-    DrawCircle(Position, 10.0f, Godot.Colors.Green);
+    // DrawCircle(Position, 10.0f, Godot.Colors.Green);
 
     foreach (var item in points)
     {
-      DrawCircle(item, 5.0f, Godot.Colors.White);
+      // DrawCircle(item, 5.0f, Godot.Colors.White);
     }
 
-    DrawCircle(headPosition, 10.0f, Godot.Colors.Red);
+    DrawCircle(headPosition, 3.0f, Godot.Colors.Red);
   }
 
   public void Move(Vector2 direction) 
@@ -66,6 +73,8 @@ public class Tentacle : Node2D
       // Check for movement
       if (dir != Vector2.Zero)
         updateGrowth();
+
+      _renderer.SetHeadPosition(headPosition);
 
       Update();
     }
@@ -95,6 +104,7 @@ public class Tentacle : Node2D
   void AddTentacleNode(Vector2 pos)
   {
     points.Add(pos);
+    _renderer.AddPoint(pos);
     lastPosition = pos;
   }
 }
