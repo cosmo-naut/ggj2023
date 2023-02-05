@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Clot_Texture.png-ff84452b83eb1bcb34b263b22cde624d.stex"
+path="res://.import/Algae_Sprite.png-f1b929e06b415bb9c14c34d619a848a3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Clot_Texture.png"
-dest_files=[ "res://.import/Clot_Texture.png-ff84452b83eb1bcb34b263b22cde624d.stex" ]
+source_file="res://Sprites/Algae_Sprite.png"
+dest_files=[ "res://.import/Algae_Sprite.png-f1b929e06b415bb9c14c34d619a848a3.stex" ]
 
 [params]
 
