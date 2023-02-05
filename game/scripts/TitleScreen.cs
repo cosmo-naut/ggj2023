@@ -6,6 +6,8 @@ public class TitleScreen : Control
     PackedScene playScene=null;//container for the main game scene.
     PackedScene howToScene=null;//for the game description/instruction scene(or credits???)
 
+    AudioStreamPlayer BGPlayer=null;
+
     public override void _Ready()
     {
         //add the event for starting the game
@@ -20,6 +22,10 @@ public class TitleScreen : Control
         //preload the howto scene
         howToScene = (PackedScene)ResourceLoader.Load("res://scenes/HowToScreen.tscn");
         
+        BGPlayer = GetNode<AudioStreamPlayer>("BGPlayer");
+        if (!BGPlayer.Playing)
+            BGPlayer.Play();
+
     }
 
     public void _QuitButtonClick()
