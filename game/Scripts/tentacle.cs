@@ -4,14 +4,12 @@ using System.Collections.Generic;
 
 public class Tentacle : Node2D
 {
+  public Creature ParentCreature { get; set; }
+
   private Vector2 headPosition;
   [Export] public float SpawnDistance = 50.0f;
   [Export] public float Speed = 60.0f;
   private Vector2 Direction;
-
-  [Export] public float growthDistance = 1000.0f;
-  [Export] public float growthRate = 40.0f;
-  private float growthCapacity;
 
   private List<Vector2> points;
   private Vector2 lastPosition;
@@ -29,7 +27,6 @@ public class Tentacle : Node2D
     points.Add(headPosition);
     lastPosition = headPosition;
 
-    growthCapacity = growthDistance;
     activeTentacle = true;
 
     Direction = Vector2.Zero;
@@ -40,7 +37,6 @@ public class Tentacle : Node2D
     _renderer.AddPoint(Position);
 
     Connect(nameof(TentacleGrowthDone), this, nameof(CreateTentaclePoints));
-    EmitSignal(nameof(TentacleGrowth), growthCapacity/growthDistance);
   }
 
   public override void _Draw()
@@ -96,13 +92,8 @@ public class Tentacle : Node2D
 
   void updateGrowth()
   {
-    growthCapacity -= growthRate;
-    growthCapacity = Math.Max(growthCapacity, 0.0f);
-
-    EmitSignal(nameof(TentacleGrowth), growthCapacity / growthDistance);
-
-    // Is done
-    activeTentacle = growthCapacity > 0.0f;
+    ParentCreature.ExertResource();
+    activeTentacle = ParentCreature.creatureResource.Progress > 0;
     if (!activeTentacle)
     {
       AddTentacleNode(headPosition);

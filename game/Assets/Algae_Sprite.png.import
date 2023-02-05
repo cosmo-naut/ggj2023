@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/placeholder.jpg-664767c05d33f25a5407e80ac1f35bac.stex"
+path="res://.import/Algae_Sprite.png-0d1fb107e53d05efa171cdf09e0d9fe0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/Testing/placeholder.jpg"
-dest_files=[ "res://.import/placeholder.jpg-664767c05d33f25a5407e80ac1f35bac.stex" ]
+source_file="res://Assets/Algae_Sprite.png"
+dest_files=[ "res://.import/Algae_Sprite.png-0d1fb107e53d05efa171cdf09e0d9fe0.stex" ]
 
 [params]
 

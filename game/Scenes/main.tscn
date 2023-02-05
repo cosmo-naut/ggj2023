@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Assets/uiProgressBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/creature.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/main.cs" type="Script" id=3]
+[ext_resource path="res://Scripts/main.cs" type="Script" id=3]
 
 [node name="root" type="Node2D"]
 script = ExtResource( 3 )

@@ -11,7 +11,7 @@ public class main : Node2D
     {
         creature = GetNode<Creature>("./creature");
         creature.Connect("TargetTentacleNew", this, "OnTargetTentacleNew");
-        creature.Connect("TargetTentacleGrowth", this, "OnTargetTentacleGrow");
+        creature.Connect("CreatureResourceChange", this, "UpdateProgress");
 
         progressBar = GetNode<uiProgressBar>("./uiTentacle");
         progressBar.Hide();
@@ -49,8 +49,8 @@ public class main : Node2D
         progressBar.UpdateProgress(100.0f);
     }
 
-    public void OnTargetTentacleGrow(float progress) 
+    public void UpdateProgress(float progress) 
     {
-        progressBar.UpdateProgress(progress * 100.0f);
+        progressBar.UpdateProgress(progress);
     }
 }
