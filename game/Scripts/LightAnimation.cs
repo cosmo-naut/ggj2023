@@ -27,7 +27,7 @@ public class LightAnimation : Light2D
 
         timer += 1;
 
-        float newScale = Mathf.Sin(timer * animationTimerAmount) * animateAmount;
+        float newScale = Mathf.Sin(timer * animationTimerAmount) * animateAmount * delta;
 
         Scale = new Vector2(originalScale.x + newScale, originalScale.y + newScale);
     }

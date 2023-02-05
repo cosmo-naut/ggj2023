@@ -8,7 +8,7 @@ public class TentaclePoint : Polygon2D
     private Vector2 _targetPosition;
     private float _angle = 0;
     public bool IsLast { get => _next == null; }
-    
+
     public void SetAngle(float angle)
     {
         _angle = angle;
@@ -19,7 +19,7 @@ public class TentaclePoint : Polygon2D
         return _angle;
     }
 
-    public void SetNext(TentaclePoint next) 
+    public void SetNext(TentaclePoint next)
     {
         _next = next;
     }
@@ -33,7 +33,7 @@ public class TentaclePoint : Polygon2D
     {
         if (IsLast)
             return _angle;
-        
+
         return Position.AngleToPoint(_next.Position);
     }
 
@@ -85,11 +85,6 @@ public class TentaclePoint : Polygon2D
         float yOffset = Mathf.Sin(angle) * distance;
 
         return new Vector2(origin.x + xOffset, origin.y + yOffset);
-    }
-
-    public override void _Draw()
-    {
-        DrawCircle(Vector2.Zero, 3, Colors.Cyan);
     }
 
     public void SetPolyPoints(Vector2[] points)
