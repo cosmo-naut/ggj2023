@@ -3,11 +3,11 @@
 [ext_resource path="res://Sprites/light.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/LightAnimation.cs" type="Script" id=2]
 
-[node name="Light2D" type="Light2D"]
+[node name="Light2D2" type="Light2D"]
 texture = ExtResource( 1 )
 texture_scale = 3.88
 color = Color( 0.894118, 0.564706, 0.564706, 1 )
-energy = 0.25
+energy = 0.35
 script = ExtResource( 2 )
 animateAmount = 0.1
 animationTimerAmount = 0.1
