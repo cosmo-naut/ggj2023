@@ -19,28 +19,6 @@ public class main : Node2D
 
     public override void _Process(float delta) 
     {
-        if(creature.targetTentacle != null) 
-        {
-            Vector2 dir = Vector2.Zero;
-            if (Input.IsActionPressed("ui_right"))
-            {
-                dir.x += 1.0f;
-            }
-            if (Input.IsActionPressed("ui_left"))
-            {
-                dir.x -= 1.0f;
-            }
-            if (Input.IsActionPressed("ui_down"))
-            {
-                dir.y += 1.0f;
-            }
-            if (Input.IsActionPressed("ui_up"))
-            {
-                dir.y -= 1.0f;
-            }
-
-            creature.targetTentacle.Move(dir);
-        }
     }
 
     public void OnTargetTentacleNew() 

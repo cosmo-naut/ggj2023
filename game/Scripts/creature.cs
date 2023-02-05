@@ -23,7 +23,7 @@ public class Creature : Node2D
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
-        if(Input.IsActionJustReleased("ui_accept")) {
+        if(Input.IsActionJustPressed("mouse_click")) {
             SpawnTentacle(Position);
         }
     }
