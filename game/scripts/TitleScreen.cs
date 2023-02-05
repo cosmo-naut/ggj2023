@@ -26,7 +26,7 @@ public class TitleScreen : Control
         playScene = (PackedScene)ResourceLoader.Load("res://scenes/main.tscn");
         //preload the howto scene
         howToScene = (PackedScene)ResourceLoader.Load("res://scenes/HowToScreen.tscn");
-
+        
     }
     public void _QuitButtonClick()
     {
@@ -45,7 +45,6 @@ public class TitleScreen : Control
         GetTree().ChangeSceneTo(howToScene);
 
     }
-
 
 
 
