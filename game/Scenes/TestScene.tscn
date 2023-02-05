@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/MapGeneration.cs" type="Script" id=2]
 [ext_resource path="res://Scenes/CameraController.tscn" type="PackedScene" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Clot_Texture.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Clot_Texture.png" type="Texture" id=5]
 
 [node name="Node2D2" type="Node2D"]
 script = ExtResource( 2 )
