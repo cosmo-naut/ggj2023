@@ -15,7 +15,7 @@ public class Tentacle : Node2D
   private Vector2 lastPosition;
   private bool activeTentacle;
 
-  private PackedScene creatureLightScene;
+  public PackedScene creatureLightScene;
 
   [Signal] delegate void TentacleGrowth(float progress);
   [Signal] delegate void TentacleGrowthDone();
@@ -39,7 +39,6 @@ public class Tentacle : Node2D
     _renderer.AddPoint(Position);
 
     Connect(nameof(TentacleGrowthDone), this, nameof(CreateTentaclePoints));
-    creatureLightScene = GD.Load<PackedScene>("res://Scenes/Tentacle/TentacleLight.tscn");
   }
 
   public override void _Draw()
