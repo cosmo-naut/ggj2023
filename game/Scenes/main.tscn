@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/uiProgressBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/creature.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/main.cs" type="Script" id=3]
+[ext_resource path="res://Assets/Music/3-2 Atmos.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Music/3-1 Pads.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Music/3-4 Melody.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Music/3-3 Dread.wav" type="AudioStream" id=7]
 
 [node name="root" type="Node2D"]
 script = ExtResource( 3 )
@@ -10,3 +14,15 @@ script = ExtResource( 3 )
 [node name="uiTentacle" parent="." instance=ExtResource( 1 )]
 
 [node name="creature" parent="." instance=ExtResource( 2 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
